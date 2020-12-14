@@ -184,8 +184,19 @@ function partialUsingArguments(/* fn, ...args1 */) {
  *   getId4() => 7
  *   getId10() => 11
  */
-function getIdGeneratorFunction(/* startFrom */) {
-  throw new Error('Not implemented');
+function getIdGeneratorFunction(startFrom) {
+  let sum = startFrom;
+  const cache = new Map();
+  function gen() {
+    if (cache.size !== 0) {
+      sum += 1;
+    }
+
+    cache.set('a', 'b');
+
+    return sum;
+  }
+  return gen;
 }
 
 
